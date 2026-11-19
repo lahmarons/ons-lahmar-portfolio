@@ -1,0 +1,60 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/jetbrains-mono';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-paper font-sans text-navy-800 antialiased transition-colors duration-300 dark:bg-navy-950 dark:text-mist-200;
+    text-rendering: optimizeLegibility;
+  }
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+  ::selection {
+    @apply bg-electric-500/20 text-navy-900 dark:bg-electric-400/30 dark:text-white;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-electric-500 ring-offset-2 ring-offset-paper dark:ring-electric-400 dark:ring-offset-navy-950;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+  .card {
+    @apply rounded-2xl border border-mist-200 bg-white/70 shadow-card backdrop-blur-sm dark:border-navy-700/70 dark:bg-navy-900/60 dark:shadow-none;
+  }
+  .eyebrow {
+    @apply font-mono text-xs font-medium uppercase tracking-[0.18em] text-electric-600 dark:text-electric-300;
+  }
+  /* Subtle engineering grid used behind the hero */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(15, 27, 55, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 27, 55, 0.06) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .dark .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(141, 176, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(141, 176, 255, 0.07) 1px, transparent 1px);
+  }
+}
